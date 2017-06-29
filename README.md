@@ -85,6 +85,12 @@ Below there're two equivalent pieces of code:
 
 ## Importing
 
+Lein dependency
+```clj
+[defake/datomic-easer "0.1.0"]
+```
+
+Requiring
 ```clj
 (ns your-project.db.create
   (:require [datomic-easer.core :refer :all]))
