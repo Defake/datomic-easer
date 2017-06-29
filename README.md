@@ -4,8 +4,8 @@ Datomic-easer allows to create datomic schema more easy for improving readabilit
 
 Below there're two equivalent pieces of code:
 
+#### Standart Datomic usage
 ```clj
-;; Standart Datomic usage
 (def schema
   [ { :db/unique             :db.unique/value, 
       :db/valueType          :db.type/string, 
@@ -64,8 +64,8 @@ Below there're two equivalent pieces of code:
 @(d/transact (d/connect db-url) schema)
 ```
 
+#### Datomic-easer usage
 ```clj
-;; Datomic-easer usage
 (defschema schema
   [:user
    ["User login"      :login     :string :unique-value]
