@@ -42,10 +42,10 @@
 
 (defmacro defdbfunc [record-func [func-name requires params func] db-url]
   `(defn ~record-func [db-url#]
-     (let [f# (d/function {:lang "clojure"}
-                          :requires ~requires
-                          :params ~params
-                          :code (str ~func))]
+     (let [f# (d/function {:lang "clojure"
+                           :requires ~requires
+                           :params ~params
+                           :code (str ~func)})]
        @(d/transact (d/connect db-url#)
                     [{ :db/id (d/tempid :db.part/user)
                        :db/ident (keyword ~func-name)
