@@ -4,8 +4,7 @@
 (defn has-param? 
   "Finds if there's a needed keyword param in args-list"
   [args-list param-keyword]
-  (if (= 0 (count args-list))
-    false
+  (if (not-empty args-list)
     (some #(= % param-keyword) args-list)))
 
 (defn get-attribute-name [entity-ns attr-name]
