@@ -1,17 +1,12 @@
 (ns datomic-easer.core
   (:require [datomic.api :as d]))
 
-(defn has-param? [args-list param-keyword]
-  "Finds if there's a needed keyword param in the args-list"
+(defn has-param? 
+  "Finds if there's a needed keyword param in args-list"
+  [args-list param-keyword]
   (if (= 0 (count args-list))
     false
-    (loop [param (first args-list)
-           args (drop 1 args-list)]
-      (if (= param param-keyword)
-        true
-        (if (< 0 (count args))
-          (recur (first args) (drop 1 args))
-          false)))))
+    (some #(= % param-keyword) args-list)))
 
 (defn get-attribute-name [entity-ns attr-name]
   (keyword (clojure.string/replace (str entity-ns "/" attr-name) ":" "")))
